@@ -1,0 +1,1536 @@
+1.WRITE A JAVA PORGRAM WHICH DEMONSTRATES GENERICS KEY AND VALUE
+create hashmap.java
+
+import java.util.*;
+
+public class hashmap {
+
+public static void main(String[] args) {
+
+	Scanner sc = new Scanner(System.in);
+	System.out.println("----MENU----");
+	System.out.println("1. Add");
+	System.out.println("2. Display using entrySet");
+	System.out.println("3. Display using keySet");
+	System.out.println("4. Search");
+	System.out.println("5. Delete");
+	System.out.println("6. Update");
+	System.out.println("7. Sort");
+	System.out.println("8. clear");
+	System.out.println("9. size");
+	System.out.println("10. Exit");
+
+	String usn,name;
+	Map<String,String> hmap = new HashMap<>();
+	while(true)
+	{
+		System.out.print("Enter your choice : ");
+		int ch = sc.nextInt();
+		
+		if(ch==1)
+		{
+			System.out.print("Enter USN : ");
+			usn = sc.next();
+			System.out.print("Enter Name : ");
+			name = sc.next();
+			hmap.put(usn, name);
+		}
+		else if(ch==2)
+		{
+			for(Map.Entry<String,String> n:hmap.entrySet())
+			{
+				System.out.print("USN : " + n.getKey());
+				System.out.println(" Name : " + n.getValue());
+			}
+		}
+		else if(ch==3)
+		{
+			System.out.println("KEYS : " + hmap.keySet());
+		}
+		else if(ch==4)
+		{
+			System.out.print("Enter the key you want to search : ");
+			String key = sc.next();
+			if(hmap.containsKey(key))
+				System.out.println("Name : "+ hmap.get(key));
+			else
+				System.out.println("Key not found");
+		}
+		else if(ch==5)
+		{
+			System.out.print("Enter USN to delete : ");
+			usn = sc.next();
+			hmap.remove(usn);
+		}
+		else if(ch==6)
+		{
+			System.out.print("Enter USN to update : ");
+			usn = sc.next();
+			
+			System.out.print("Enter Name to update : ");
+			name = sc.next();
+			
+			hmap.replace(usn,name);
+		
+		}
+		else if(ch==7)
+		{
+			Map<String,String> tmap = new TreeMap<>();
+			tmap.putAll(hmap);
+			System.out.println(tmap);
+		}
+		else if(ch==8)
+		{
+			hmap.clear();
+			System.out.println(hmap);
+		}
+		else if(ch==9)
+		{
+			System.out.println("Size : " + hmap.size());
+		}
+		else if(ch==10)
+		{
+			break;
+		}
+		else
+			System.out.println("Invalid choice");
+	
+	}
+	sc.close();
+}
+}
+	
+create treemap.java
+import java.util.*;
+
+public class treemap {
+
+public static void main(String[] args) {
+
+	Scanner sc = new Scanner(System.in);
+	
+	System.out.println("----MENU----");
+	System.out.println("1. Add");
+	System.out.println("2. Get");
+	System.out.println("3. Display using keySet");
+	System.out.println("4. put if absent");
+	System.out.println("5. pollFirstEntry");
+	System.out.println("6. pollLastEntry");
+	System.out.println("7. Delete");
+	System.out.println("8. clear");
+	System.out.println("9. Exit");
+	
+	String usn,name;
+	Map<String,String> tmap = new TreeMap<>();
+	
+	while(true)
+	{
+		System.out.print("Enter your choice : ");
+		int ch = sc.nextInt();
+		
+		if(ch==1)
+		{
+			System.out.print("Enter USN : ");
+			usn = sc.next();
+			System.out.print("Enter Name : ");
+			name = sc.next();
+			tmap.put(usn, name);
+		}
+		else if(ch==2)
+		{
+			System.out.print("Enter USN to display name : ");
+			usn = sc.next();
+			System.out.println("Name : " + tmap.get(usn));
+		}
+		else if(ch==3)
+		{
+			System.out.println("KEYS : " + tmap.keySet());
+		}
+		else if(ch==4)
+		{
+			System.out.print("Enter USN : ");
+			usn = sc.next();
+			System.out.print("Enter Name : ");
+			name = sc.next();
+			tmap.putIfAbsent(usn, name);
+		}
+		else if(ch==5)
+		{
+			System.out.println(((TreeMap<String, String>) tmap).pollFirstEntry());
+		}
+		else if(ch==6)
+		{
+			System.out.println(((TreeMap<String, String>) tmap).pollLastEntry());
+		}
+		else if(ch==7)
+		{
+			System.out.print("Enter USN to delete : ");
+			usn = sc.next();
+			tmap.remove(usn);
+		}
+		else if(ch==8)
+		{
+			tmap.clear();
+			System.out.println(tmap);
+		}
+		else if(ch==9)
+		{
+			break;
+		}
+		else
+			System.out.println("Invalid choice");
+	
+	}
+	sc.close();
+}
+
+}
+
+
+2.WRITE A JAVA PROGRAM WHICH DEMONSTARTES ARRAYLIST,LINKEDLIST
+	CREATE PACKAGE Arraylist
+	CREATE JAVA CLASS Student
+	code:
+	package Arraylist;
+import java.util.*;
+public class Student {
+	int usn;
+	String name,add;
+	Student(int usn,String name,String add){
+		this.usn=usn;
+		this.name=name;
+		this.add=add;
+		
+	}
+	public void display(List<Student> l) {
+		Iterator<Student> i=l.iterator();
+		while(i.hasNext()) {
+			Student s=i.next();
+			System.out.println("Usn : "+s.usn);
+			System.out.println("Name : "+s.name);
+			System.out.println("Address : "+s.add);
+			
+		}
+	
+	}
+}
+	
+	CREATE JAVA CLASS mainexe.java
+	Code:
+	
+	package Arraylist;
+import java.util.*;
+public class mainexe {
+
+	public static <T> void main(String[] args) {
+		Scanner sc=new Scanner(System.in) ;
+		Student s1=null;
+		LinkedList<Student> l1=new LinkedList<Student>();
+		while(true) {
+			System.out.println("1.Insert");
+			System.out.println("2.Display");
+			System.out.println("3.Update.");
+			System.out.println("4.Delete");
+			System.out.println("5.Size");
+			System.out.println("6.Clear");
+			System.out.println("7.Sort");
+			System.out.println("8.AddFirst");
+			System.out.println("9.AddLAst");
+			System.out.println("10.removefirst");
+			System.out.println("11.removelast");
+			System.out.println("Enter the choice");
+			System.out.println("-----------------");
+			int choice=sc.nextInt();
+			
+			if(choice==1) {
+				//Insert 
+				System.out.println(" enter the usn");
+				int usn=sc.nextInt();
+				System.out.println("enter the name");
+				String name=sc.next();
+				System.out.println("enter the add");
+				String add=sc.next();
+				s1=new Student(usn,name,add);
+				l1.add(s1);
+				System.out.println("Added");
+				System.out.println("---------------");
+			}
+			else if(choice==2) {
+				s1.display(l1);
+				System.out.println("---------------");
+			}
+			else if(choice==3) {
+				System.out.println("Enter the index value to update");
+				int index=sc.nextInt();
+				System.out.println(" enter the usn");
+				int usn=sc.nextInt();
+				System.out.println("enter the name");
+				String name=sc.next();
+				System.out.println("enter the add");
+				String add=sc.next();
+				s1=new Student(usn,name,add);
+				l1.set(index, s1);
+				System.out.println("Updated");
+				System.out.println("---------------");
+			}
+			else if(choice==4) {
+				System.out.println("Enter the index value to update");
+				int index=sc.nextInt();
+				l1.remove(index);
+			}
+			else if(choice==5) {
+				int size=l1.size();
+				System.out.println("Size of Linked List"+size);
+			}
+			else if(choice==6) {
+				l1.clear();
+			}
+			else if(choice==7) {
+				//Collections.sort(l1);
+				//s1.display(l1);
+				
+			}
+			else if(choice==8) {
+				System.out.println(" enter the usn");
+				int usn=sc.nextInt();
+				System.out.println("enter the name");
+				String name=sc.next();
+				System.out.println("enter the add");
+				String add=sc.next();
+				s1=new Student(usn,name,add);
+				l1.addFirst(s1);
+				System.out.println("Added");
+				System.out.println("---------------");
+			}	
+			else if(choice==9) {
+				System.out.println(" enter the usn");
+				int usn=sc.nextInt();
+				System.out.println("enter the name");
+				String name=sc.next();
+				System.out.println("enter the add");
+				String add=sc.next();
+				s1=new Student(usn,name,add);
+				l1.addLast(s1);
+				System.out.println("Added");
+				System.out.println("---------------");
+			}
+			else if(choice==10) {
+				l1.removeFirst();
+			}
+			else if(choice==11) {
+				l1.removeLast();
+			}
+			else {
+				break;
+			}
+		}
+	}
+
+}
+
+
+
+	CREATE Linkedlist PACKAGE
+	CREATE Student.java
+	code:
+	package Linkedlist;
+import java.util.*;
+public class Student {
+	int usn;
+	String name,add;
+	
+	public Student(int usn,String name,String add) {
+		this.usn=usn;
+		this.name=name;
+		this.add=add;
+		
+		
+	}
+	public void display(List<Student> l) {
+		Iterator<Student> i=l.iterator();
+		while(i.hasNext()) {
+			Student s=i.next();
+			System.out.println("Usn : "+s.usn);
+			System.out.println("Name : "+s.name);
+			System.out.println("Address : "+s.add);
+
+		}
+	}
+}
+
+	CREATE mainexe.java
+		package Linkedlist;
+import java.util.*;
+public class mainexe {
+	
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		Student s1=null;
+		ArrayList<Student> l1=new ArrayList<Student>();
+		while(true) {
+			System.out.println("1.Insert");
+			System.out.println("2.Update");
+			System.out.println("3.Remove");
+			System.out.println("4.Display");
+			System.out.println("5.Sort");
+			System.out.println("6.Clear");
+			System.out.println("7.Size");
+			System.out.println("Enter the choice");
+			int choice=sc.nextInt();
+			if(choice==1)
+			{
+				System.out.println("Enter the usn");
+				int usn=sc.nextInt();
+				System.out.println("Enter the name");
+				String name=sc.next();
+				System.out.println("Enter the address");
+				String add=sc.next();
+				s1=new Student(usn,name,add);
+				l1.add(s1);
+			}
+			else if(choice==2) {
+				System.out.println("Enter the index value");
+				int index=sc.nextInt();
+
+				System.out.println("Enter the usn");
+				int usn=sc.nextInt();
+				System.out.println("Enter the name");
+				String name=sc.next();
+				System.out.println("Enter the address");
+				String add=sc.next();
+				s1=new Student(usn,name,add);
+				l1.set(index, s1);
+				
+			}
+			else if(choice==3) {
+				System.out.println("Enter the index value");
+				int index=sc.nextInt();
+				l1.remove(index);
+			}
+			else if(choice==4) {
+				s1.display(l1);
+			}
+			else if(choice==5) {
+				//Collections.sort(l1);
+				s1.display(l1);
+				
+			}
+			else if(choice==6) {
+				l1.clear();
+			}
+			else if(choice==7) {
+				
+				int size=l1.size();
+				System.out.println("Size of arraylist "+size);
+			}
+			else {
+				break;
+			}
+		}
+	}
+
+}
+
+
+
+3.Write a java application using hibernate to inserrt data into student database adn retrive info based on particular queries
+
+Prequiste
+hibernate jar files
+mysql connector jar files
+
+Create hibernate.cfg.xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">1234</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/students</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <mapping class="lab3.employee"/>
+        <mapping resource="employee.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
+
+create hibernate-mapping file 
+name as employee.hbm.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping>
+<class name="lab3.employee" table="employee">
+<id name="empid" type="int" column="empid"></id>
+<property name="name" type="string" column="name" />
+<property name="salary" type="int" column="salary" />
+<property name="address" type="string" column="address" />
+</class>
+</hibernate-mapping>
+
+Create package name as lab3 in that two class file 
+one is employee.java
+we can create getters and settersright click+source+generate getters and setters
+package lab3;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="employee")
+public class employee {
+	@Id
+	int empid;
+	int salary;
+	String name,address;
+	public int getEmpid() {
+		return empid;
+	}
+	public void setEmpid(int empid) {
+		this.empid = empid;
+	}
+	public int getSalary() {
+		return salary;
+	}
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+}
+
+one is MainExecute.java
+
+
+
+package lab3;
+
+import java.util.*;
+import org.hibernate.*;
+import org.hibernate.cfg.*;
+public class MainExecute {
+
+	SessionFactory sc = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+
+	
+	public void insert(int empid,String name,int salary,String address) {
+		Session session = sc.openSession();
+		Transaction t = session.beginTransaction();
+		employee e1=new employee();
+		e1.setEmpid(empid);
+		e1.setName(name);
+		e1.setSalary(salary);
+		e1.setAddress(address);
+		session.save(e1);
+		t.commit();
+		System.out.print("Entered Succesfully");
+		}
+
+	public void update(int empid,String name) {
+	
+		Session session = sc.openSession();
+		Transaction t = session.beginTransaction();
+	    Query query = session.createQuery("update employee set name = '"+name+"' where empid ='"+empid+"'");
+	    query.executeUpdate();
+	    System.out.print("updated Succesfully");
+		t.commit();
+	}
+	
+	public void delete(int empid) {
+		Session session = sc.openSession();
+		Transaction t = session.beginTransaction();
+		employee e=new employee();
+		e.setEmpid(empid);
+		session.delete(e);
+		t.commit();
+		System.out.println("Deleted");
+	}
+	
+	
+	public void display() {
+		Session session = sc.openSession();
+		Transaction t = session.beginTransaction();
+		Query q = session.createQuery("from employee");
+		List<?> l = q.getResultList();
+		Iterator<?> it = l.iterator();
+		if(!it.hasNext()) {
+			System.out.println("\n\nNo Employees!!!\n");
+
+		}
+		while (it.hasNext()) {
+			employee e1 = (employee) it.next();
+			System.out.println("\nEmp ID :"+e1.getEmpid()+
+					"\t\tName :"+e1.getName()+
+					"\nSalary :"+e1.getSalary()+
+					"\t\tAddress :"+e1.getAddress());
+		}
+		t.commit();
+		}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MainExecute m1=new MainExecute();
+		Scanner sc=new Scanner(System.in);
+		int empid,salary,ch=0;
+		String name,address;
+		while(true) {
+		System.out.println("\n\n1.Insert\t2.Update\n3.Delete\t4.Display\nPress 0 to exit\n");
+		ch=sc.nextInt();		
+			if(ch==1) {
+				System.out.println("Emp ID :");
+				empid=sc.nextInt();
+				System.out.println("Name :");
+				name=sc.next();
+				System.out.println("Salary :");
+				salary=sc.nextInt();
+				System.out.println("Address :");
+				address=sc.next();
+				m1.insert(empid, name, salary, address);
+			}
+			else if(ch==2) {
+				System.out.println("Emp ID :");
+				empid=sc.nextInt();
+				System.out.println("Name :");
+				name=sc.next();
+				m1.update(empid, name);
+			}
+			else if(ch==3) {
+				System.out.println("Emp ID :");
+				empid=sc.nextInt();
+				m1.delete(empid);
+			}
+			else if(ch==4) {
+				m1.display();
+			}
+			else {
+				break;
+			}
+		}
+	}
+}
+
+
+
+
+4.Demonstrate the rest API application for storing and retrieving the information from the restAPI using CoAP
+Create package lab4
+create two java class
+Client1.java
+
+
+package lab4;
+
+import java.io.*;
+
+import org.eclipse.californium.core.CoapClient;
+import org.eclipse.californium.elements.exception.ConnectorException;
+
+public class Client1 {
+
+	public static void main(String[] args) {
+		CoapClient client1=new CoapClient("coap://localhost/Humidity");
+		try {
+			for(int i=0;i<10;i++) {
+				String text=client1.get().getResponseText();
+				System.out.println(text);
+			}
+		}catch(ConnectorException e2) {
+				e2.printStackTrace();
+			}
+			catch(IOException e2) {
+				e2.printStackTrace();
+			}//Blocking Call
+			System.out.println("Client Ended");
+		}
+	}
+
+Resource1.java
+package lab4;
+
+import org.eclipse.californium.core.CoapResource;
+import org.eclipse.californium.core.CoapServer;
+import org.eclipse.californium.core.server.resources.CoapExchange;
+
+public class Resource1 extends CoapResource{
+	public Resource1(String name) {
+		super(name);
+	}
+	
+	@Override
+	public void handleGET(CoapExchange exchange) {
+		String text="Humidy : "+Math.floor((Math.random()*(45-20)+20));
+		//System.out.println("Host Requesting : "+exchange.getSourceAddress()+" "+text);
+		
+		exchange.respond(text);
+		try {
+			Thread.sleep(1000);
+		}catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void main(String[] args) {
+		CoapServer server=new CoapServer();
+		server.add(new Resource1("Humidity"));
+		server.start();
+	}
+}
+
+
+5.Demonstrate Spring core on Dependency Injection(XML BASED)
+
+bean.xml
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+           <bean id="cbean" class="lab5.Customer">
+           <!-- 	<property name="name" value="John Smith"/>
+        	<property name="address" value="123 Main St"/>
+        	<property name="email" value="john.smith@example.com"/>
+        	-->
+        	<property name="T2" ref="tbean"/>
+           </bean>
+           	
+           <bean id="tbean" class="lab5.Ticket">
+           <!-- 
+             <property name="ticketNumber" value="123456"/>
+        	<property name="description" value="Ticket for event XYZ"/>
+           
+            -->
+           </bean>
+              
+           
+</beans>
+
+create package name as lab5
+Customer.java
+package lab5;
+
+import java.io.Serializable;
+
+public class Customer implements Serializable{
+	
+	
+	private static final long serialVersionUID = -1822887442090794827L;
+	//public static final long serialVersionUId =1L;
+	private String name,address,email;
+	private Ticket T2;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public Ticket getT2() {
+		return T2;
+	}
+	public void setT2(Ticket t2) {
+		T2 = t2;
+	}
+	@Override
+	public String toString() {
+		return "Name : \t"+name +
+				"Address : \t"+address+
+				"email : \t"+email+T2;
+				
+	}
+	
+	
+}
+
+Ticket.java
+package lab5;
+
+import java.io.Serializable;
+
+public class Ticket implements Serializable {
+	
+	private static final long serialVersionUID=1L;
+	int ticketnumber;
+	String description;
+	public int getTicketnumber() {
+		return ticketnumber;
+	}
+	public void setTicketnumber(int ticketnumber) {
+		this.ticketnumber = ticketnumber;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	@Override
+	public String toString() {
+		return "\n Ticket Number : \t"+ticketnumber+
+				"\n Description : \t"+description;
+	}
+
+}
+mainexecute.java
+
+package lab5;
+import java.util.*;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+public class mainexecute {
+
+	public static void main(String[] args) {
+		ApplicationContext context1= new ClassPathXmlApplicationContext("bean.xml");
+		ApplicationContext context2= new ClassPathXmlApplicationContext("bean.xml");
+		
+		Customer cc=(Customer)context1.getBean("cbean");
+		Ticket tt=(Ticket)context2.getBean("tbean");
+		int ticketnumber,ch=0;
+		String description;
+		String name,address,email;
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Welcome Passeneger\n\n");
+		
+		while(true) {
+			System.out.println("1)Start\t\t2)Exit");
+			ch=sc.nextInt();
+			if(ch==1) {
+					System.out.println("Enter Name :");
+					name=sc.next();
+					System.out.println("Enter email :");
+					email=sc.next();
+					System.out.println("Enter address :");
+					address=sc.next();
+					System.out.println("Enter Ticket number :");
+					ticketnumber=sc.nextInt();
+					System.out.println("Enter description :");
+					description=sc.next();
+					cc.setName(name);
+					cc.setEmail(email);
+					cc.setAddress(address);
+					tt.setTicketnumber(ticketnumber);
+					tt.setDescription(description);
+					cc.setT2(tt);
+					System.out.println(cc);
+					
+					
+				}
+			else if(ch==2) {
+					break;
+				}
+		
+	}
+	}
+}
+
+
+
+6.Demonstrate Spring core on Dependency Injection(java Based)
+
+Create package lab6
+we have 4 java files
+config.java
+package lab6;
+
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+
+@Configuration
+public class Config {
+
+	@Bean
+	@Scope(value=ConfigurableBeanFactory.SCOPE_SINGLETON)
+	public Student setBeanStudent() {
+		return new Student();
+	}
+	@Bean
+	@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	public Student1 setBeanStudent1() {
+		return new Student1();
+	}
+	
+	
+}
+
+
+Student.java
+package lab6;
+
+import java.io.Serializable;
+
+public class Student implements Serializable{
+	private static final long serialVersionUID=1L;
+	private String name;
+	private int age;
+	Student1 s1;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public Student1 getS1() {
+		return s1;
+	}
+	public void setS1(Student1 s1) {
+		this.s1 = s1;
+	}
+	public String toString() {
+		return "Name : \t"+name+
+				"Age : \t"+age+
+				s1;
+	}
+}
+
+Student1.java
+package lab6;
+
+import java.io.Serializable;
+
+public class Student1 implements Serializable {
+	private static final long serialVersionUID=1L;
+	private String course,college;
+	private float marks;
+	public String getCourse() {
+		return course;
+	}
+	public void setCourse(String course) {
+		this.course = course;
+	}
+	public String getCollege() {
+		return college;
+	}
+	public void setCollege(String college) {
+		this.college = college;
+	}
+	public float getMarks() {
+		return marks;
+	}
+	public void setMarks(float marks) {
+		this.marks = marks;
+	}
+	
+	public String toString() {
+		return "Course : \t"+course+
+				"College  \t"+college+
+				"Marks : \t"+marks;
+	}
+}
+
+mainexe.java
+package lab6;
+
+
+
+	import java.util.Scanner;
+	import org.springframework.context.ApplicationContext;
+	import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+	import org.springframework.context.annotation.Configuration;
+
+	@Configuration
+	public class mainexe {
+
+		public static void main(String[] args) {
+			// TODO Auto-generated method stub
+			
+			ApplicationContext context1=new AnnotationConfigApplicationContext(Config.class);
+			ApplicationContext context2=new AnnotationConfigApplicationContext(Config.class);
+
+			Student s=(Student)context1.getBean(Student.class);
+
+			Student1 s1=(Student1)context1.getBean(Student1.class);
+			
+
+			String name,course,college;
+			int age,ch;
+			float marks;
+			Scanner sc=new Scanner(System.in);
+			System.out.println("Welcome Student");
+			while(true) {
+				System.out.println("\n1)Start\t\t2)Exit");
+				ch=sc.nextInt();
+				if(ch==1) {
+						System.out.println("Enter Name :");
+						name=sc.next();
+						System.out.println("Enter Age :");
+						age=sc.nextInt();
+						System.out.println("Enter Course :");
+						course=sc.next();
+						System.out.println("Enter College :");
+						college=sc.next();
+						System.out.println("Enter Marks:");
+						marks=sc.nextFloat();
+						s.setAge(age);
+						s.setName(name);
+						s1.setCollege(college);
+						s1.setCourse(course);
+						s1.setMarks(marks);
+						s.setS1(s1);
+						System.out.println(s);
+					}
+				else if(ch==2) {
+						break;
+					}
+			}
+			System.out.println("------------Thank You------------");
+			}
+		}
+
+
+
+
+
+
+7.Demonstrate SPRING JPA in CRUD OPERATIONS
+package Lab7
+create AppConfig.java
+
+package com.Lab7;
+
+import javax.persistence.EntityManagerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
+
+@Configuration
+@EnableJpaRepositories(basePackages = { "com.Lab7" })
+public class AppConfig {
+	
+	@Bean
+	public LocalEntityManagerFactoryBean entityManagerFactory() {
+		LocalEntityManagerFactoryBean factoryBean = new LocalEntityManagerFactoryBean();
+		factoryBean.setPersistenceUnitName("JPA_Example");
+		return factoryBean;
+	}
+
+	@Bean
+	public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(entityManagerFactory);
+		return transactionManager;
+	}
+}
+
+create Mesaage_Main.java
+
+package com.Lab7;
+
+import java.util.List;
+import java.util.Scanner;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class Message_Main {
+
+	public static MessageService get1() {
+		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
+		appContext.scan("com.Lab7");
+		appContext.refresh();
+		MessageService messageService = (MessageService) appContext.getBean("MessageService");
+		return messageService;
+	}
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		while(true) {
+			System.out.println("1)Insert\n 2)Update \n3)Delete \n 4)Display \n 5)Exit \n");
+			int ch= sc.nextInt();
+			if(ch==1) {
+				MessageService messageService=get1();
+				System.out.println("Enter the id");
+				int i= sc.nextInt();
+				System.out.println("Enter the Name");
+				String i1= sc.next();
+				
+				messageService.Save(i,i1);
+			
+			}
+			else if(ch==2) {
+				MessageService messageService=get1();
+				System.out.println("Enter the id");
+				int i= sc.nextInt();
+				System.out.println("Enter the Name");
+				String i1= sc.next();
+				
+				messageService.Update(i,i1);
+			}
+			else if(ch==3) {
+				MessageService messageService=get1();
+				System.out.println("Enter the id");
+				int i= sc.nextInt();
+				messageService.Delete(i);
+			}
+			else if(ch==4) {
+				MessageService messageService=get1();
+
+				List<Message> al = messageService.getMessages();
+				for (Message m : al) {
+					System.out.println(m.getMid() + " " + m.getMessage());
+				}
+				
+			}
+			else if(ch==5) {
+				break;
+			}
+		}
+		
+		
+		
+	}
+}
+create Message.java
+package com.Lab7;
+
+import javax.persistence.*;
+
+import org.springframework.data.annotation.Persistent;
+
+@Entity
+public class Message {
+	@Id
+	private int mid;
+	private String message;
+
+	public Message() {
+	}
+
+	public Message(int mid, String message) {
+		super();
+		this.mid = mid;
+		this.message = message;
+	}
+
+	public int getMid() {
+		return mid;
+	}
+
+	public void setMid(int mid) {
+		this.mid = mid;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+}
+create MessageRepository.java
+package com.Lab7;
+
+import javax.transaction.Transactional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+@Transactional
+public interface MessageRepository extends PagingAndSortingRepository<Message, Integer>{
+}
+
+create MessageService.java
+package com.Lab7;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+
+@Service("MessageService")
+public class MessageService {
+
+	@Autowired
+	MessageRepository ar;
+
+	public void Save(int mid, String message) {
+		Message m = new Message();
+		m.setMid(mid);
+		m.setMessage(message);
+		ar.save(m);
+	}
+	public void Delete(int mid) {
+		Message m = new Message();
+		m.setMid(mid);
+		
+		ar.delete(m);
+	
+	}
+	public void Update(int mid, String message) {
+		Message m = new Message();
+		m.setMid(mid);
+		m.setMessage(message);
+		ar.save(m);
+	
+	}
+	
+
+	public List<Message> getMessages() {
+		List<Message> al = (List<Message>) ar.findAll();
+		return al;
+	}
+}
+
+Create File in META-INF 
+persitence.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  
+<persistence version="2.2" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+-->
+
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+<persistence-unit name="JPA_Example" transaction-type="RESOURCE_LOCAL">
+<class>com.Lab7.Message</class>
+<properties>
+<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/1rv21mc037"/>
+<property name="javax.persistence.jdbc.user" value="root"/>
+<property name="javax.persistence.jdbc.password" value="1234"/>
+<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+</properties>
+</persistence-unit>
+</persistence>
+
+
+
+8.Demonstrate SPRING MVC on inventory MANAGEMENT
+
+create javaresource->src->com.tanuj->MainController.java
+
+package com.tanuj;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class MainController {
+
+	@RequestMapping("/")
+	public String index() {
+		return "index";
+	}
+	
+	@RequestMapping("/page2")
+	public String page2(@RequestParam String sname , @RequestParam String scourse , Model model) {
+		System.out.println("customer name = "+sname);
+		model.addAttribute("sname", sname);
+		model.addAttribute("scourse",scourse);
+		return "page2";
+	}
+}
+
+Webcontent->Web-Inf->index.jsp
+<!doctype html>
+<html>
+<head>
+<title>Index</title>
+</head>
+<body>
+	<form action="page2" method="get">
+		<label>Student Name:</label>
+		<input type="text" name="sname"><br>
+		<label>Student Course</label>
+		<input type="text" name="scourse"><br>
+		<button type="submit">Submit</button>
+	</form>
+	
+	
+</body>
+</html>
+page2.jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Home Page</title>
+</head>
+<body>
+	<center>
+		<h3>Home Page</h3>
+		<h5>Student Details</h5>
+		Student Name = ${sname} <br>
+		Student Course = ${scourse}
+
+	</center>
+</body>
+</html>
+
+
+
+
+
+9.Demonstrate SPRING MVC on inventory MANAGEMENT with mulitple views
+
+create javaresource->src->com.tanuj->MainController.java
+
+package com.tanuj;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class MyController {
+
+	@GetMapping("/")
+	public String view()
+	{
+		return "page2";
+	}
+	
+	@RequestMapping("/page2")
+	public String viewPage(@RequestParam String pid,@RequestParam String pname,@RequestParam String price,Model model)
+	{
+		model.addAttribute("pid", pid);
+		model.addAttribute("pname",pname);
+		model.addAttribute("price", price);
+		if(pid=="")
+		{
+			model.addAttribute("error1","invalid Input");
+			return "index";
+		}
+		if(pname=="")
+		{
+			model.addAttribute("error2","invalid Input");
+			return "index";
+		}
+		if(price.length()<2)
+		{
+			model.addAttribute("error3","Price is minimum");
+			return "index";
+		}
+		return "page2";
+	}
+}
+
+web-inf
+index.jsp
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form action="page2" method="get"> 
+	
+		<label>Product ID:</label>
+		<input type="text" name="pid" >${error1 }<br> 
+		<label>Product Name:</label> 
+		<input type="text" name="pname">${error2 }<br> 
+		<label>Product Price:</label>
+		<input type="text" name="price">${error3 }<br>
+		<button type="submit">Submit</button>
+	</form>
+</body>
+</html>
+page2.jsp
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div align="center">
+		<h3>Home Page</h3>
+		<h5>Product Details</h5>
+		Product ID=${pid}<br>
+		Product Name = ${pname} <br>
+		Product Price = ${price}
+
+	</div>
+
+</body>
+</html>
+
+10Demonstrate SPRING REST in get,put,post operations.
+
+javaresource->p1pkg->
+Message.java
+package p1pkg;
+
+
+public class Message {
+
+	int id;
+	String message;
+
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public Message(int id, String message) {
+		this.id = id;
+		this.message = message;
+	}
+
+	public Message() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
+
+RestMessageController.java
+package p1pkg;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.myMessage.Message;
+
+
+
+@RestController
+@RequestMapping("/")
+public class RestMessageController {
+	ArrayList<Message> al = new ArrayList<Message>();
+		
+	@GetMapping("/")
+	public Message getMessageById(){
+		
+		Message m1 = null;
+		return m1;
+	}
+	@RequestMapping(value = "/display/{id}")
+    public Message getMessageById(@PathVariable int id) {
+		Message m1 = null;
+		lp:	for(Message m:al) {
+				if(m.getId()==id) {
+					m1 = m;
+					break lp;
+				}
+			}
+			return m1;
+		}
+		
+    
+	
+	@RequestMapping(value = "/add")
+	public List<Message> add(@RequestParam int id, String message){
+		Message m = new Message(id, message);
+		al.add(m);
+		return al;
+	}
+	
+	
+	@RequestMapping(value = "/delete/{id}")
+	public List<Message> delete(@PathVariable int id){
+		Message m1 = null;
+		for(Message m: al) {
+			if(m.getId()==id) {
+				al.remove(m);
+			}
+		}
+		return al;
+	}	
+	
+	
+	@RequestMapping(value = "/display")
+	public List<Message> displayall(){
+		return al;
+	}
+	
+	@RequestMapping(value = "/update")
+	public List<Message> update(@RequestParam int id, String message){
+		lp :for(Message m:al) {
+			if(m.getId()==id) {
+				m.setMessage(message);
+				break lp;
+			}
+		}
+		return al;
+	}
+	
+	@RequestMapping(value = "/update/{id}")
+	public Message updatebyid(@PathVariable int id, String message){
+		Message m1=null;
+		lp :for(Message m:al) {
+			if(m.getId()==id) {
+				m.setMessage(message);
+				m1=m;
+				break lp;
+			}
+		}
+		return m1;
+	}
+	
+}
+web-inf->lib->spring-servlet.xml
+web.xml
+
+<!-- Provide support for component scanning -->
+	<context:component-scan base-package="p1pkg" />
+
+	<!--Provide support for conversion, formatting and validation -->
+	<mvc:annotation-driven />
+	<!-- Define Spring MVC view resolver -->
+
